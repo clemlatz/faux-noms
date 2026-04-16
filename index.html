@@ -4,59 +4,73 @@
     <title>Fonon · Générateur de faux noms</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Qui sait quand vous allez avoir besoin d'un faux nom ? Pas moi. Mais vous avez besoin d'un faux nom, vous êtes au bon endroit.">
-    <link rel="source" href="https://github.com/clemlatz/faux-noms" />
+    <meta name="description" content="Qui sait quand vous allez avoir besoin d'un faux nom ? Pas moi. Mais si vous avez besoin d'un faux nom, vous êtes au bon endroit.">
+    <link rel="source" href="https://github.com/clemlatz/fonon" />
+    <style>
+      body {
+        background: rgb(252 250 247);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+        padding: 0;
+        margin: 0;
+        font-family: sans-serif;
+        font-size: 24px;
+      }
+    </style>
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        const noms = [
+          {
+            prenom: 'Maude',
+            nom: 'Zarella'
+          },
+          {
+            prenom: 'Camille',
+            nom: 'Honnête'
+          },
+          {
+            prenom: 'Medhi',
+            nom: 'Cament'
+          },
+          {
+            prenom: 'Léo',
+            nom: 'Pard'
+          },
+          {
+            prenom: 'Luc',
+            nom: 'Arne'
+          },
+          {
+            prenom: 'Gordon',
+            nom: 'Zola'
+          },
+          {
+            prenom: 'Ali',
+            nom: 'Gator'
+          },
+          {
+            prenom: 'Marc',
+            nom: 'Assin'
+          },
+          {
+            prenom: 'Judas',
+            nom: 'Nanas'
+          }
+        ];
+
+        const nombreDeNoms = noms.length;
+        const indexAleatoire = Math.floor(Math.random() * nombreDeNoms);
+        const nomChoisi = noms[indexAleatoire];
+        const { prenom, nom } = nomChoisi;
+
+        const fononDiv = document.querySelector('#fonon');
+        fononDiv.innerText = `${prenom} ${nom}`;
+      });
+    </script>
   </head>
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      const noms = [
-        {
-          prenom: 'Maude',
-          nom: 'Zarella'
-        },
-        {
-          prenom: 'Camille',
-          nom: 'Honnête'
-        },
-        {
-          prenom: 'Medhi',
-          nom: 'Cament'
-        },
-        {
-          prenom: 'Léo',
-          nom: 'Pard'
-        },
-        {
-          prenom: 'Luc',
-          nom: 'Arne'
-        },
-        {
-          prenom: 'Gordon',
-          nom: 'Zola'
-        },
-        {
-          prenom: 'Ali',
-          nom: 'Gator'
-        },
-        {
-          prenom: 'Marc',
-          nom: 'Assin'
-        },
-        {
-          prenom: 'Judas',
-          nom: 'Nanas'
-        }
-      ];
-
-      const nombreDeNoms = noms.length;
-      const indexAleatoire = Math.floor(Math.random() * nombreDeNoms);
-      const nomChoisi = noms[indexAleatoire];
-      const { prenom, nom } = nomChoisi;
-
-      const fauxNomDiv = document.querySelector('#faux-nom');
-      fauxNomDiv.innerText = `${prenom} ${nom}`;
-    });
-  </script>
   <body>
     <div id="fonon" />
   </body>
