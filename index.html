@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <title>Fonon · Générateur de faux noms</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const noms = [{
+        prenom: 'Maude',
+        nom: 'Zarella'
+      }];
+
+      const fauxNomDiv = document.querySelector('#faux-nom');
+      const { prenom, nom } = noms[0];
+      fauxNomDiv.innerText = `${prenom} ${nom}`;
+    });
+  </script>
+  <body>
+    <div id="fonon" />
+  </body>
+</html>
