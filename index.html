@@ -7,13 +7,23 @@
   </head>
   <script>
     window.addEventListener('DOMContentLoaded', () => {
-      const noms = [{
-        prenom: 'Maude',
-        nom: 'Zarella'
-      }];
+      const noms = [
+        {
+          prenom: 'Maude',
+          nom: 'Zarella'
+        },
+        {
+          prenom: 'Camille',
+          nom: 'Honnête'
+        },
+      ];
+
+      const nombreDeNoms = noms.length;
+      const indexAleatoire = Math.floor(Math.random() * nombreDeNoms);
+      const nomChoisi = noms[indexAleatoire];
+      const { prenom, nom } = nomChoisi;
 
       const fauxNomDiv = document.querySelector('#faux-nom');
-      const { prenom, nom } = noms[0];
       fauxNomDiv.innerText = `${prenom} ${nom}`;
     });
   </script>
