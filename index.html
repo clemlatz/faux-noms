@@ -23,6 +23,20 @@
     <script type="module">
       import noms from './noms.json' with { type: 'json' };
 
+      class Store {
+        #items = [];
+
+        get(key) {
+          return this.#items[key];
+        }
+
+        set(key, value) {
+          this.#items[key] = value;
+        }
+      }
+      const store = new Store();
+
+
       function getNomAleatoire() {
         const nombreDeNoms = noms.length;
         const indexAleatoire = Math.floor(Math.random() * nombreDeNoms);
@@ -38,19 +52,21 @@
         return nomChoisi;
       }
 
-      let nomAffiché = "";
-
       window.addEventListener('DOMContentLoaded', () => {
-        nomAffiché = afficherNomAleatoire();
+        const nomAffiché = afficherNomAleatoire();
+        store.set('nomAffiché', nomAffiché); 
       });
 
       document.addEventListener('keydown', (event) => {
         if (event.key === " ") {
-          nomAffiché = afficherNomAleatoire();
+          const nomAffiché = afficherNomAleatoire();
+          store.set('nomAffiché');
         }
 
         if (event.key === "c") {
-          navigator.clipboard.writeText(nomAffiché);
+          navigator.clipboard.writeText(
+            store.get('nomAffiché')
+          );
         }
       });
     </script>
