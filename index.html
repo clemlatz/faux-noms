@@ -23,13 +23,15 @@
     <script type="module">
       import noms from './noms.json' with { type: 'json' };
 
-      window.addEventListener('DOMContentLoaded', () => {
-
+      function getNomAleatoire() {
         const nombreDeNoms = noms.length;
         const indexAleatoire = Math.floor(Math.random() * nombreDeNoms);
         const nomChoisi = noms[indexAleatoire];
-        const { prenom, nom } = nomChoisi;
+        return nomChoisi;
+      }
 
+      window.addEventListener('DOMContentLoaded', () => {
+        const { prenom, nom } = getNomAleatoire();
         const fononDiv = document.querySelector('#fonon');
         fononDiv.innerText = `${prenom} ${nom}`;
       });
