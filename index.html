@@ -19,6 +19,11 @@
         font-family: sans-serif;
         font-size: 24px;
       }
+
+      dialog {
+        font-family: monospace;
+        font-size: 20px;
+      }
     </style>
     <script type="module">
       import noms from './noms.json' with { type: 'json' };
@@ -56,6 +61,23 @@
         return nomChoisi;
       }
 
+      function afficherModale() {
+        const elementModale = document.querySelector('dialog');
+        elementModale.innerHTML = "Fonon a été créé par Clément Latzarus (clemlatz.dev)";
+        elementModale.showModal();
+        document.addEventListener('keydown', (event) => {
+          if (event.key === "x") {
+            elementModale.close();
+          }
+        });
+      }
+      
+      function masquerModale() {
+        const elementModale = document.querySelector('dialog');
+        elementModale.innerHTML = "";
+        elementModale.close();
+      }
+
       function renderPage(content) {
         const elementPrincipal = document.querySelector('main');
         elementPrincipal.innerText = content;
@@ -79,10 +101,15 @@
             store.get('nomAffiché')
           );
         }
+
+        if (event.key === "?") {
+          afficherModale();
+        }
       });
     </script>
   </head>
   <body>
     <main></main> 
+    <dialog closedby="closerequest"></dialog>
   </body>
 </html>
