@@ -51,10 +51,14 @@
 
       function afficherNomAleatoire() {
         const { prenom, nom } = getNomAleatoire();
-        const fononDiv = document.querySelector('#fonon');
         const nomChoisi = `${prenom} ${nom}`;
-        fononDiv.innerText = nomChoisi;
+        renderPage(nomChoisi);
         return nomChoisi;
+      }
+
+      function renderPage(content) {
+        const fononDiv = document.querySelector('#fonon');
+        fononDiv.innerText = content;
       }
 
       window.addEventListener('DOMContentLoaded', () => {
