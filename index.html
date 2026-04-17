@@ -33,16 +33,24 @@
       function afficherNomAleatoire() {
         const { prenom, nom } = getNomAleatoire();
         const fononDiv = document.querySelector('#fonon');
-        fononDiv.innerText = `${prenom} ${nom}`;
+        const nomChoisi = `${prenom} ${nom}`;
+        fononDiv.innerText = nomChoisi;
+        return nomChoisi;
       }
 
+      let nomAffiché = "";
+
       window.addEventListener('DOMContentLoaded', () => {
-        afficherNomAleatoire();
+        nomAffiché = afficherNomAleatoire();
       });
 
       document.addEventListener('keydown', (event) => {
         if (event.key === " ") {
-          afficherNomAleatoire();
+          nomAffiché = afficherNomAleatoire();
+        }
+
+        if (event.key === "c") {
+          navigator.clipboard.writeText(nomAffiché);
         }
       });
     </script>
