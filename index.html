@@ -33,6 +33,11 @@
         set(key, value) {
           this.#items[key] = value;
         }
+
+        incrémenter(key) {
+          const item = this.#items[key] ?? 0;
+          this.#items[key] = item + 1;
+        }
       }
       const store = new Store();
 
@@ -55,12 +60,14 @@
       window.addEventListener('DOMContentLoaded', () => {
         const nomAffiché = afficherNomAleatoire();
         store.set('nomAffiché', nomAffiché); 
+        store.incrémenter('nombreDeNomsAffichés');
       });
 
       document.addEventListener('keydown', (event) => {
         if (event.key === " ") {
           const nomAffiché = afficherNomAleatoire();
-          store.set('nomAffiché');
+          store.set('nomAffiché')
+          store.incrémenter('nombreDeNomsAffichés');
         }
 
         if (event.key === "c") {
