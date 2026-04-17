@@ -30,10 +30,14 @@
         return nomChoisi;
       }
 
-      window.addEventListener('DOMContentLoaded', () => {
+      function afficherNomAleatoire() {
         const { prenom, nom } = getNomAleatoire();
         const fononDiv = document.querySelector('#fonon');
         fononDiv.innerText = `${prenom} ${nom}`;
+      }
+
+      window.addEventListener('DOMContentLoaded', () => {
+        afficherNomAleatoire();
       });
     </script>
   </head>
