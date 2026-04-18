@@ -92,7 +92,7 @@
       document.addEventListener('keydown', (event) => {
         if (event.key === " ") {
           const nomAffiché = afficherNomAleatoire();
-          store.set('nomAffiché')
+          store.set('nomAffiché', nomAffiché);
           store.incrémenter('nombreDeNomsAffichés');
         }
 
