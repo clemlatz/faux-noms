@@ -28,23 +28,23 @@
     <script type="module">
       import noms from './noms.json' with { type: 'json' };
 
-      class Store {
-        #items = [];
+      class Mémoire {
+        #souvenirs = [];
 
-        get(key) {
-          return this.#items[key];
+        get(clé) {
+          return this.#souvenirs[clé];
         }
 
-        set(key, value) {
-          this.#items[key] = value;
+        set(clé, value) {
+          this.#souvenirs[clé] = value;
         }
 
-        incrémenter(key) {
-          const item = this.#items[key] ?? 0;
-          this.#items[key] = item + 1;
+        incrémenter(clé) {
+          const item = this.#souvenirs[clé] ?? 0;
+          this.#souvenirs[clé] = item + 1;
         }
       }
-      const store = new Store();
+      const mémoire = new Mémoire();
 
 
       function getNomAleatoire() {
@@ -85,20 +85,20 @@
 
       window.addEventListener('DOMContentLoaded', () => {
         const nomAffiché = afficherNomAleatoire();
-        store.set('nomAffiché', nomAffiché); 
-        store.incrémenter('nombreDeNomsAffichés');
+        mémoire.set('nomAffiché', nomAffiché); 
+        mémoire.incrémenter('nombreDeNomsAffichés');
       });
 
       document.addEventListener('keydown', (event) => {
         if (event.key === " ") {
           const nomAffiché = afficherNomAleatoire();
-          store.set('nomAffiché', nomAffiché);
-          store.incrémenter('nombreDeNomsAffichés');
+          mémoire.set('nomAffiché', nomAffiché);
+          mémoire.incrémenter('nombreDeNomsAffichés');
         }
 
         if (event.key === "c") {
           navigator.clipboard.writeText(
-            store.get('nomAffiché')
+            mémoire.get('nomAffiché')
           );
         }
 
